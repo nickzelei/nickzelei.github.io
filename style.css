@@ -9,6 +9,10 @@ body, html
 	-webkit-border-radius: 50%;
 }
 
+.default-cursor {
+	cursor: default;
+}
+
 .intro
 {
 	text-align: center;
