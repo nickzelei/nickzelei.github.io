@@ -16,14 +16,14 @@ body, html
 .intro
 {
 	text-align: center;
-	padding-top: 5%;
-	padding-bottom: 5%;
+	padding-top: 4%;
+	padding-bottom: 4%;
 	margin-bottom: 25px;
 }
 
 .intro h1
 {
-	font-weight: 900;
+	font-weight: 700;
 	text-transform: uppercase;
 }
 
@@ -155,4 +155,8 @@ body, html
 footer
 {
 	padding-top: 0px;
+}
+
+.collapsible-header {
+	padding: 0.5rem;
 }
