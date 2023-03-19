@@ -20,10 +20,10 @@ async function getAsyncNumber(num: number): Promise<number> {
 }
 
 (async () => {
-  const nums = await Promise.all(
+  const nums = await Promise.all([
     getAsyncNumber(1),
     getAsyncNumber(2),
-  );
+  ])
   nums.forEach((num) => console.log(num));
 })();
 ```
