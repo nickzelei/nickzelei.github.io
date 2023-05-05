@@ -24,6 +24,10 @@ The regex for this thing is pretty gnarly, and AWS specifies the length constrai
 ^(\*\.)?(((?!-)[A-Za-z0-9-]{0,62}[A-Za-z0-9])\.)+((?!-)[A-Za-z0-9-]{1,62}[A-Za-z0-9])$
 ```
 
+We'll set the regular expression aside mostly in this post, however, it's worth noting that this regex provided via Amazon's documents does _not_ work in all languages (Go being one of them). Frustrating? yes!
+
+
+
 However, after squinting at the (below) paragraph, the actual length of the primary domain is 64 octets to remain in compliance with [RFC5280](https://datatracker.ietf.org/doc/html/rfc5280)!
 
 
@@ -31,7 +35,7 @@ However, after squinting at the (below) paragraph, the actual length of the prim
 
 If the desire is to have a longer FQDN, that must be specified as the subject alternative name, which _finally_ has a FQDN length of 253 :).
 
-It gets worse though, because each octet (the bits between each period. Commonly referred to as a subdomain) has a limitation of 63 characters, which combined (including the periods) must total be less than or equal to 253. Unless you are issuing the primary domain, which must be less than or equal to 63 itself.
+It gets worse though, because each octet (the bits between each period. Commonly referred to as a subdomain) has a limitation of 63 characters, which combined (including the periods) must total be less than or equal to 253. Unless you are issuing the primary domain, which must be less than or equal to 64 itself.
 
 So what happens if the FQDN that you want to use ends up longer than what the CN allows? Well, now you're stuck figuring out some bogus common name that you need to come up with just so that you can stuff the _real_ FQDN that you want to use into the subject alt names list. The perk is that you gain the ability to issue a cert for a FQDN that is near 4x as large.
 
@@ -41,6 +45,6 @@ Well, building systems that automate cert generation based on user input general
 
 For me, this manifests when allowing users to specify certain parts of the subdomain for their own use.
 
-Oh btw, if you're generating a wildcard cert, that is _not_ included in the length limitations! So the url that is generated can be 63 characters, _plus_ `*.`!
+Oh btw, if you're generating a wildcard cert, that is _not_ included in the length limitations! So the url that is generated can be 64 characters, _plus_ `*.`!
 
 Whew.
