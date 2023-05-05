@@ -10,7 +10,7 @@ date = "2023-05-04T19:48:04-07:00"
 tags = ["infra","tls","woes","rants"]
 +++
 
-I was bitten by TLS woes today. At work we use AWS ACM. For the most part, it's pretty much ok, except it has a few quirks.
+I was bitten by TLS Certificate woes today. At work we use AWS ACM. For the most part, it's pretty much ok, except it has a few quirks.
 However, I was bitten by what I believe to be a standardized format.
 
 If you want some fun reading, check out the lenghty docs they have on the constraints for requesting a cert [here](https://docs.aws.amazon.com/acm/latest/APIReference/API_RequestCertificate.html).
@@ -31,9 +31,9 @@ However, after squinting at the (below) paragraph, the actual length of the prim
 
 If the desire is to have a longer FQDN, that must be specified as the subject alternative name, which _finally_ has a FQDN length of 253 :).
 
-It gets worse though, because each octet (the bits between each period. Commonly referred to as a subdomain) has a limitation of 63 characters, which combined (including the periods) must total be less than 253.
+It gets worse though, because each octet (the bits between each period. Commonly referred to as a subdomain) has a limitation of 63 characters, which combined (including the periods) must total be less than or equal to 253. Unless you are issuing the primary domain, which must be less than or equal to 63 itself.
 
-So what happens if the FQDN that you want to use ends up longer than what the CN allows? Well, now you're stuck figuring out some bogus common name that you need to come up with just so that you can stuff the _real_ FQDN that you want to use into the subject alt names list.
+So what happens if the FQDN that you want to use ends up longer than what the CN allows? Well, now you're stuck figuring out some bogus common name that you need to come up with just so that you can stuff the _real_ FQDN that you want to use into the subject alt names list. The perk is that you gain the ability to issue a cert for a FQDN that is near 4x as large.
 
 Why is this even an issue?
 
@@ -41,7 +41,6 @@ Well, building systems that automate cert generation based on user input general
 
 For me, this manifests when allowing users to specify certain parts of the subdomain for their own use.
 
-
-Oh btw, if you're generating a wildcard cert, that is _not_ included in the length limitations! So the url that is generated can be 64 characters, _plus_ `*.`!
+Oh btw, if you're generating a wildcard cert, that is _not_ included in the length limitations! So the url that is generated can be 63 characters, _plus_ `*.`!
 
 Whew.
