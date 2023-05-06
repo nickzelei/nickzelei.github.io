@@ -45,6 +45,4 @@ Well, building systems that automate cert generation based on user input general
 
 For me, this manifests when allowing users to specify certain parts of the subdomain for their own use.
 
-Oh btw, if you're generating a wildcard cert, that is _not_ included in the length limitations! So the url that is generated can be 64 characters, _plus_ `*.`!
-
 Whew.
