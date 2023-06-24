@@ -7,7 +7,7 @@ date = "2023-06-23T17:24:25-07:00"
 #
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
 
-tags = ["rant"]
+tags = ["rant","musings"]
 +++
 
 I read a lot on the internet, and am always open to new and interesting blogs. One blog in particular has had a profound impact on my life and is one that I constantly am thinking about. That blog is [Schlep Blindness](http://paulgraham.com/schlep.html) by Paul Graham, one of the co-founders of [Y Combinator](https://ycombinator.com).
