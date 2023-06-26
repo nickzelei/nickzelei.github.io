@@ -19,7 +19,7 @@ I see the value of it for IoC for enterprise as well as maintainability. It’s 
 
 However, when I started working on Nucleus, I switched from TypeScript to Golang. Why did I do this? Well, Nucleus is built pretty heavily ontop of Kubernetes. So the early code that we built was all built on Go, because well, Kubernetes is written in Go and their client libraries are the best there.
 
-This started my down the journey of gRPC and using Protobuf as a unified interface. I’m hooked on Protobuf. It’s hard to see myself ever wanting to use anything else. I love the fact that it’s platform independent and you can generate code in many different languages with it.
+This started me down the road of gRPC and using Protobuf as a unified interface. I’m hooked on Protobuf. It’s hard to see myself ever wanting to use anything else. I love the fact that it’s platform independent and you can generate code in many different languages with it.
 
 Some hangups I continually have with it though are that it’s not as approachable as a standard REST service is. At least it doesn’t _feel_ that way. Why is this? If you can generate client libraries in all of the highly used web-based programming languages, then what’s the deal? Are people writing raw http queries anymore these days with `<insert-standard-language-lib-here>`? Or would you just generate (or use a generated) client library in its stead? I would assume the latter, at least these days.
 
