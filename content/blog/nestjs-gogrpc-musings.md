@@ -1,5 +1,5 @@
 +++
-title = "Nextjs, Golang gRPC Musings"
+title = "Nestjs, Golang gRPC Musings"
 date = "2023-06-23T21:33:55-07:00"
 
 #
@@ -7,14 +7,14 @@ date = "2023-06-23T21:33:55-07:00"
 #
 # description = "An optional description for SEO. If not provided, an automatically created summary will be used."
 
-tags = ["golang","grpc","nextjs","musings"]
+tags = ["golang","grpc","nestjs","musings"]
 +++
 
-I wrote nextjs for years. I went deep. Even to the point of adding my own framework as a platform to it to extend beyond the hooks and capabilities that nextjs provides.
+I wrote nestjs for years. I went deep. Even to the point of adding my own framework as a platform to it to extend beyond the hooks and capabilities that nestjs provides.
 
 I no longer have access to any of that code however, as it’s all closed source and owned by my previous employer. I hold out hope that maybe some day pieces of that code will be open-sourced. We always talked about it. Of course, none of us work there anymore.
 
-Needless to say, I went neck deep into Nextjs and as such, IoC dependency injection as a whole. I love it, complexity and all. I saw how easy it made things and allowed you to finally write the business logic that was needed.
+Needless to say, I went neck deep into nestjs and as such, IoC dependency injection as a whole. I love it, complexity and all. I saw how easy it made things and allowed you to finally write the business logic that was needed.
 I see the value of it for IoC for enterprise as well as maintainability. It’s why springboot is so popular, right?
 
 However, when I started working on Nucleus, I switched from TypeScript to Golang. Why did I do this? Well, Nucleus is built pretty heavily ontop of Kubernetes. So the early code that we built was all built on Go, because well, Kubernetes is written in Go and their client libraries are the best there.
