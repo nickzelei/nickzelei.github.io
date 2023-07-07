@@ -6,6 +6,5 @@ These days I'm mostly working on [Nucleus](https://nucleuscloud.com).
 
 [Linkedin](https://www.linkedin.com/in/nick-zelei/)
 [Github](https://www.github.com/nickzelei)
-[Twitter](https://twitter.com/NickZelei)
 [Mastodon](https://mastodon.social/@nickzelei)
 [RSS](/index.xml)
