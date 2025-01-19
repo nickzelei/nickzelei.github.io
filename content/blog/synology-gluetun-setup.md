@@ -1,7 +1,7 @@
 ---
 title: "Synology Gluetun Setup"
 date: 2025-01-18T12:00:00-08:00
-draft: true
+draft: false
 tags = ["infra", "synology", "vpn", "nas"]
 ---
 
