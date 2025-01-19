@@ -8,4 +8,3 @@ These days I'm working on [Neosync](https://neosync.dev).
 [Github](https://www.github.com/nickzelei)
 [X](https://x.com/nickzelei)
 [Blog RSS](/blog/index.xml)
-[Mastodon](https://mastodon.social/@nickzelei)
