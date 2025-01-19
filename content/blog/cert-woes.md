@@ -13,7 +13,7 @@ tags = ["infra","tls","woes","rants"]
 I was bitten by TLS Certificate woes today. At work we use AWS ACM. For the most part, it's pretty much ok, except it has a few quirks.
 However, I was bitten by what I believe to be a standardized format.
 
-If you want some fun reading, check out the lenghty docs they have on the constraints for requesting a cert [here](https://docs.aws.amazon.com/acm/latest/APIReference/API_RequestCertificate.html).
+If you want some fun reading, check out the lengthy docs they have on the constraints for requesting a cert [here](https://docs.aws.amazon.com/acm/latest/APIReference/API_RequestCertificate.html).
 
 TLS Certificates have a primary domain name that they can be configured with, which ends up being used as the CN (common name).
 This is in the format of a FQDN (fully-qualified domain name).
