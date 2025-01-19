@@ -10,9 +10,9 @@ date = "2023-03-19T15:17:43-07:00"
 tags = ["golang","concurrency"]
 +++
 
-I've been writing Go professionaly for a little while now. Previously, I used to write a lot of TypeScript and thought a lot in async/await. As such, I wrote a lot of code to spawn off parallel streams of work.
+I've been writing Go professionally for a little while now. Previously, I used to write a lot of TypeScript and thought a lot in async/await. As such, I wrote a lot of code to spawn off parallel streams of work.
 
-As I've transitioned to Golang, I found myself missing the neatness of `Promise.all` and how easy it is to spawn multiple promises and easily get thier results in a return statement.
+As I've transitioned to Golang, I found myself missing the neatness of `Promise.all` and how easy it is to spawn multiple promises and easily get their results in a return statement.
 
 ```ts
 async function getAsyncNumber(num: number): Promise<number> {
@@ -35,7 +35,7 @@ I was missing the neatness of this and was finding myself a little frustrated wi
 Enter sync/errgroup!
 
 To execute something similar in Go, the `golang.org/x/sync/errgroup` module can be used.
-This works by initializing a new Group, and then spawning goroutines using the initiailized struct. After all of the workers are spawned, the group can be waited.
+This works by initializing a new Group, and then spawning goroutines using the initialized struct. After all of the workers are spawned, the group can be waited.
 Once the wait is complete, all of the work has been completed, and if there are no errors, the program can continue.
 
 ```go

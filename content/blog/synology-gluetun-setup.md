@@ -129,7 +129,7 @@ Once we have glutetun set up and running, we can add a container to it by updati
     depends_on:
       - gluetun
 ```
-The `network_mode` here is the important piece. This mode works a little bit differently than simlpy bringing the container online and having it live in the same _docker network_. They actually are configured to run on the same internal network, or rather, on the same local host. 
+The `network_mode` here is the important piece. This mode works a little bit differently than simply bringing the container online and having it live in the same _docker network_. They actually are configured to run on the same internal network, or rather, on the same local host. 
 
 Normally when two containers come online in the same network, they are routable via their container or service names. In this respect, they share the same local host (and must not have overlapping binding ports).
 
