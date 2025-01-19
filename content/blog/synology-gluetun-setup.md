@@ -96,9 +96,8 @@ WantedBy=multi-user.target
 
 You'll want to restart systemd to recognize the server, and then enable the service to start on boot:
 
-```conosle
+```console
 sudo systemctl daemon-reload
-
 sudo systemctl enable tun.service.service
 ```
 
