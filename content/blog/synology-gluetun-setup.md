@@ -2,10 +2,11 @@
 title: "Synology Gluetun Setup"
 date: 2025-01-18T12:00:00-08:00
 draft: false
-tags = ["infra", "synology", "vpn", "nas"]
+tags: ["infra", "synology", "vpn", "nas"]
 ---
 
 ## Introduction
+
 I have a Synology NAS that I use as my own local file storage system. It's a pretty capable little box that I also use to host a few docker containers that run inside of a VPN.
 
 I wanted it to be fully dockerized and have had to go through a few different iterations to get the setup in a spot that feels just right. This blog is going to detail that setup. The hope here is that it helps someone else out in the future (as well as helps myself out as it's a sane place to document the work I've done on it thus far.)
@@ -56,9 +57,11 @@ services:
     volumes:
       - /volume1/docker/gluetun:/gluetun
 ```
-Now, most of this will depend on your specific setup and what VPN provider you are using, where you want your VPN to source from, etc. 
+
+Now, most of this will depend on your specific setup and what VPN provider you are using, where you want your VPN to source from, etc.
 
 ### Setting up `/dev/net/tun`
+
 An important bit of info here is the `/dev/net/tun` device that is attached. This is typically provided via the Linux system, but is not installed on Synology boxes.
 You can double check this by running `ls -l /dev/net/tun` to see if it exists.
 
@@ -67,6 +70,7 @@ This can be easily rectified by running the following command:
 ```console
 /sbin/insmod /lib/modules/tun.ko
 ```
+
 You'll find that the tun device now exists on your machine. However, this does not persist through servers boots!
 
 This can be easily rectified however by setting up a `systemd` service that handles this for you on boot.
@@ -75,7 +79,7 @@ A service can be created pretty easily by adding a new file to the `/etc/systemd
 
 It looks like this:
 
-```
+```ini
 [Unit]
 Description=Run tun at startup
 After=network.target
@@ -88,7 +92,7 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-``` 
+```
 
 You'll want to restart systemd to recognize the server, and then enable the service to start on boot:
 
@@ -103,6 +107,7 @@ You can also start it too if you want ahead of time if you haven't already creat
 ```console
 sudo systemctl start tun.service
 ```
+
 From here on out, whenever your NAS boots, you'll have the tun device automatically enabled! Woohoo!
 
 ## Adding a container to the VPN
@@ -129,7 +134,8 @@ Once we have glutetun set up and running, we can add a container to it by updati
     depends_on:
       - gluetun
 ```
-The `network_mode` here is the important piece. This mode works a little bit differently than simply bringing the container online and having it live in the same _docker network_. They actually are configured to run on the same internal network, or rather, on the same local host. 
+
+The `network_mode` here is the important piece. This mode works a little bit differently than simply bringing the container online and having it live in the same _docker network_. They actually are configured to run on the same internal network, or rather, on the same local host.
 
 Normally when two containers come online in the same network, they are routable via their container or service names. In this respect, they share the same local host (and must not have overlapping binding ports).
 
@@ -145,6 +151,7 @@ gluetun:
   environment:
     - FIREWALL_VPN_INPUT_PORTS=33796
 ```
+
 Another note for qbittorrent is that you will need to expose the firewall vpn input port on gluetun to be qbit's torrenting port.
 
 ## Fixing occasional network loss
@@ -170,4 +177,6 @@ This is a quick and easy script that can be put behind a cronjob to ensure that 
 Personally I have a cron set up to run this script every 10 minutes or so, which keeps the torrent container nice and healthy.
 
 ## Conclusion
+
 With this setup, you should have longevity in your container network setup and need to do very little maintenance on it. Enjoy and happy tunneling!
+

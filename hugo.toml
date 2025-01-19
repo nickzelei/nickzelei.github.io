@@ -8,7 +8,7 @@ theme = 'hugo-bearblog'
 # Basic metadata configuration for your blog.
 title = "Nick Zelei's Blog"
 author = "Nick Zelei"
-copyright = "Copyright © 2023, Nick Zelei."
+copyright = "Copyright © 2025, Nick Zelei."
 languageCode = "en-US"
 
 # Generate a nice robots.txt for SEO
