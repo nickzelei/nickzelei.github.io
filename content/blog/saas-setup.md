@@ -5,8 +5,6 @@ description = "Musing on setting up a new software project"
 tags = ["musings","rant","rants","woes"]
 +++
 
-# SaaS Setup
-
 I think what can be really annoying at times as a developer is being flush with ideas. Once you know how to build or have built a SaaS platform, it's really easy to think you can just bang something out in a few hours.
 
 For the most part, this is true and untrue. I've sat down on a Saturday thinking I could throw together an MVP, fast forward a few hours and I'm sitting there with barely a hello world page.
